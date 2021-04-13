@@ -16,18 +16,18 @@ Route::get('/', function () {
 });
 
 //agrupamento de rotas
-Route::group(['namespace' => 'Form'], function (){
-    //Route::get('listagem-usuario', 'UserController@ListUser');
+//Route::group(['namespace' => 'Form'], function (){
+    Route::get('listagem-usuario', 'UserController@ListUser');
+//
+//    Route::get('usuarios', 'TestController@listAllUsers')->name('users.listAll');
+//    Route::get('usuarios/novo', 'TestController@formAddUser')->name('users.formAddUser');
+//    Route::get('usuarios/editar/{user}', 'TestController@formEditUser')->name('users.formEditUser');
+//    Route::get('usuarios/{user}', 'TestController@listUser')->name('users.list');
+//    Route::post('usuarios/store', 'TestController@storeUser')->name('users.store');
+//    Route::patch('usuarios/edit/{user}', 'TestController@edit')->name('users.edit');
+//    Route::delete('usuarios/destroy/{user}', 'TestController@destroy')->name('user.destroy');
+//
+//
+//});
 
-    Route::get('usuarios', 'TestController@listAllUsers')->name('users.listAll');
-    Route::get('usuarios/novo', 'TestController@formAddUser')->name('users.formAddUser');
-    Route::get('usuarios/editar/{user}', 'TestController@formEditUser')->name('users.formEditUser');
-    Route::get('usuarios/{user}', 'TestController@listUser')->name('users.list');
-    Route::post('usuarios/store', 'TestController@storeUser')->name('users.store');
-    Route::patch('usuarios/edit/{user}', 'TestController@edit')->name('users.edit');
-    Route::delete('usuarios/destroy/{user}', 'TestController@destroy')->name('user.destroy');
-
-
-});
-
-
+Route::resource('usuarios', 'Form\\TestController')->names('user')->parameters(['usuarios' => 'user']);
