@@ -51,7 +51,7 @@ class TestController extends Controller
     public function edit(User $user,Request $request)
     {
         $user->name = $request->name;
-        if(filter_var($request->email)){
+        if(filter_var($request->email, FILTER_VALIDATE_EMAIL)){
             $user->email = $request->email;
         }
         if(!empty($request->password)){
@@ -59,6 +59,13 @@ class TestController extends Controller
         }
         $user->save();
 
+        return redirect()->route('users.listAll');
+    }
+
+    public function destroy(User $user, Request $request)
+    {
+
+        $user->delete();
         return redirect()->route('users.listAll');
     }
 
