@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','PostController@showForm');
+Route::post('/debulg','PostController@debulg')->name('debulg');
+
+
 
 //agrupamento de rotas
 //Route::group(['namespace' => 'Form'], function (){
@@ -30,4 +31,6 @@ Route::get('/', function () {
 //
 //});
 
-Route::resource('usuarios', 'Form\\TestController')->names('user')->parameters(['usuarios' => 'user']);
+//Route::resource('usuarios', 'Form\\TestController')->names('user')->parameters(['usuarios' => 'user']);
+
+
