@@ -14,11 +14,15 @@
 Route::get('/','PostController@showForm');
 Route::post('/debulg','PostController@debulg')->name('debulg');
 
+Route::get('/usuario/{id}','UserController@show');
+Route::get('/endereco/{address}','AddressController@show');
+
+
 
 
 //agrupamento de rotas
 //Route::group(['namespace' => 'Form'], function (){
-    Route::get('listagem-usuario', 'UserController@ListUser');
+//    Route::get('listagem-usuario', 'UserController@ListUser');
 //
 //    Route::get('usuarios', 'TestController@listAllUsers')->name('users.listAll');
 //    Route::get('usuarios/novo', 'TestController@formAddUser')->name('users.formAddUser');

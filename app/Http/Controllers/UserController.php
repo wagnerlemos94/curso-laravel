@@ -4,21 +4,93 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function ListUser()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-//        $user = new User();
-//        $user->name = 'Gustavo web';
-//        $user->email = 'cursos@upinside.com.br';
-//        $user->password = Hash::make('123');
-//        $user->save();
-//        echo '<h1>Listagem de Usuário</h1>';
-        $user = User::where('id', 1)->first();
-        return view('listUser',[
-            'user' => $user,
-        ]);
-   }
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $user = User::where('id', $id)->first();
+        if($user){
+            echo "<h1>Dados do usuário</h1>";
+            echo "<p>Nome: {$user->name} E-mail:{$user->email}</p>";
+        }
+        $address = $user->address()->first();
+
+        if($address){
+            echo "<h1>Dados do Endereço</h1>";
+            echo "Endereço Completo: {$address->street} ,{$address->number}, {$address->city}, {$address->state}";
+        }
+//        dd($user);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }

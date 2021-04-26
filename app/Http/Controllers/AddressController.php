@@ -46,7 +46,16 @@ class AddressController extends Controller
      */
     public function show(Address $address)
     {
-        //
+        if($address){
+            echo "<h1>Dados do Endereço</h1>";
+            echo "Endereço Completo: {$address->street} ,{$address->number}, {$address->city}, {$address->state}";
+        }
+
+        $user = $address->user()->first();
+        if($user){
+            echo "<h1>Dados do usuário</h1>";
+            echo "<p>Nome: {$user->name} E-mail:{$user->email}</p>";
+        }
     }
 
     /**
