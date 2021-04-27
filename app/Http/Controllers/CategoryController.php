@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\category;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,41 +41,30 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(category $category)
     {
-        $user = User::where('id', $id)->first();
-        if($user){
-            echo "<h1>Dados do usuário</h1>";
-            echo "<p>Nome: {$user->name} E-mail:{$user->email}</p>";
-        }
-        $address = $user->address()->first();
 
-        if($address){
-            echo "<h1>Dados do Endereço</h1>";
-            echo "<p>Endereço Completo: {$address->street} ,{$address->number}, {$address->city}, {$address->state}</p>";
+        echo "<h1>Categorie</h1>";
+
+        $posts =  $category->posts()->get();
+        foreach ($posts as $post){
+            echo "<p># {$post->id} {$post->title} {$post->content}</p>";
         }
 
-        $posts = $user->posts   ()->get();
 
-        if($posts){
-            echo "<h1>Artigos: </h1>";
-            foreach ($posts as $post){
-                echo "<p>#{$post->id} ,{$post->title}, {$post->content}</p>";
-            }
-        }
 
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(category $category)
     {
         //
     }
@@ -84,10 +73,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, category $category)
     {
         //
     }
@@ -95,10 +84,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(category $category)
     {
         //
     }

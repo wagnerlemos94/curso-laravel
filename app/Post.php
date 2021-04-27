@@ -14,6 +14,16 @@ class Post extends Model
         'content'
     ];
 
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user', 'id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(category::class, 'posts_categories','post','category');
+    }
+
     public function setTitleAttribute($value)
     {
         $this->attributes['title'] = $value;

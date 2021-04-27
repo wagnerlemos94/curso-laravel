@@ -16,6 +16,8 @@ Route::post('/debulg','PostController@debulg')->name('debulg');
 
 Route::get('/usuario/{id}','UserController@show');
 Route::get('/endereco/{address}','AddressController@show');
+Route::get('/artigo/{post}','PostController@show');
+Route::get('/categoria/{category}','CategoryController@show');
 
 
 
