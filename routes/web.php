@@ -11,7 +11,10 @@
 |
 */
 
-Route::get('/','PostController@showForm');
+//Route::get('/','PostController@showForm');
+Route::get('/',function (){
+    return view('welcome');
+});
 Route::post('/debulg','PostController@debulg')->name('debulg');
 
 Route::get('/usuario/{id}','UserController@show');
@@ -39,4 +42,6 @@ Route::get('/categoria/{category}','CategoryController@show');
 
 //Route::resource('usuarios', 'Form\\TestController')->names('user')->parameters(['usuarios' => 'user']);
 
+Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
