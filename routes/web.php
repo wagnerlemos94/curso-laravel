@@ -13,14 +13,27 @@
 
 //Route::get('/','PostController@showForm');
 Route::get('/',function (){
-    return view('welcome');
-});
-Route::post('/debulg','PostController@debulg')->name('debulg');
+    return view('site.home');
+})->name('site.home');
 
-Route::get('/usuario/{id}','UserController@show');
-Route::get('/endereco/{address}','AddressController@show');
-Route::get('/artigo/{post}','PostController@show');
-Route::get('/categoria/{category}','CategoryController@show');
+Route::get('/cursos',function (){
+    return view('site.courses');
+})->name('site.courses');
+
+
+Route::get('/contato',function (){
+    return view('site.contact');
+})->name('site.contact');
+
+
+
+
+//Route::post('/debulg','PostController@debulg')->name('debulg');
+//
+//Route::get('/usuario/{id}','UserController@show');
+//Route::get('/endereco/{address}','AddressController@show');
+//Route::get('/artigo/{post}','PostController@show');
+//Route::get('/categoria/{category}','CategoryController@show');
 
 
 
